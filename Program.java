@@ -81,7 +81,7 @@ public class Program{
     
             public void alimentar() {
     
-                System.out.println(nombre + " (mamífero) ha sido alimentado.");
+                System.out.println(nombre + " ha sido alimentado.");
     
             }
     
@@ -113,7 +113,7 @@ public class Program{
     
             public void alimentar() {
     
-                System.out.println(nombre + " (ave) ha sido alimentado.");
+                System.out.println(nombre + " ha sido alimentado.");
     
             }
     
@@ -145,7 +145,7 @@ public class Program{
     
             public void alimentar() {
     
-                System.out.println(nombre + " (reptil) ha sido alimentado.");
+                System.out.println(nombre + " ha sido alimentado.");
     
             }
     
@@ -155,7 +155,7 @@ public class Program{
     
             public double consumoDiario() {
     
-                return 5; // Ejemplo: 5 kg de alimento al día
+                return 5; //kg
     
             }
     
@@ -166,11 +166,11 @@ public class Program{
 
 
         
-    //  --clase para manejar archivos CSV (aún en desarrollo*)-.
-    // @autor Junior-Hernandez 
+    //  --clase para manejar archivos CSV--
+    // @author Junior-Hernandez 
     public static class ManejoDeCsv{
 
-        // funcion para escribir en archivos csv (hace falta añadir el nombre de las clases para guardarlas cuando las haya)
+        // --funcion para escribir en archivos csv--
        
         public static void escribirCsvReptil(Reptil reptilxd){
             try(BufferedWriter BuffW=new BufferedWriter(new FileWriter("registro.csv", true))){ 
@@ -255,6 +255,7 @@ public class Program{
         }
     
         public static void agregarAnimal(){
+
             System.out.println("elija el tipo de animal que quiere agregar: "+"\n"+"1. mamifero"+"\n"+"2. ave"+"\n"+"3. eptil");
             int tipoAnimal=sc.nextInt();
             switch(tipoAnimal){
