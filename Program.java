@@ -171,10 +171,10 @@ public class Program{
     public static class ManejoDeCsv{
 
         // funcion para escribir en archivos csv (hace falta añadir el nombre de las clases para guardarlas cuando las haya)
-        public static void escribirCsv(){
+        public static void escribirCsv(Animal animalxd){
             try(BufferedWriter BuffW=new BufferedWriter(new FileWriter("registro.csv", true))){ 
-                String line; //aqui voy a alzar los atributos de las clases
-                BuffW.write("prueba,xd");
+                String line = animalxd.nombre+","+animalxd.edad+","+animalxd.peso+","+animalxd.dieta;
+                BuffW.write(line);
                 BuffW.newLine();
             }catch(IOException e){
                 e.printStackTrace();
@@ -189,7 +189,7 @@ public class Program{
                 while((line=BuffR.readLine())!=null){
                     String[] values=line.split(",");
                     for(String value : values){
-                        System.out.println(value+" ");
+                        System.out.print(value+" ");
                     }
                     System.out.println();
                 }
@@ -220,10 +220,10 @@ public class Program{
                    menuZoo(sc);
                    break;
                case 2:
-                   ManejoDeCsv.leerCsv("registro.csv");
+                   System.out.println("FASE II");
                    break;
                case 3:
-                   ManejoDeCsv.escribirCsv();
+                   System.out.println("FASE III");
                    break;
                case 4:
                    System.out.println("Saliendo del programa");
@@ -268,6 +268,7 @@ public class Program{
                     break;
                 case 3:
                     System.out.println("Opción 3: Exportar datos a CSV.");
+                    // ManejoDeCsv.escribirCsv();
                     // Aquí iría el código para exportar los datos a un archivo CSV.
                     break;
                 case 4:
@@ -281,6 +282,8 @@ public class Program{
 
 
     public static void main(String[] args){
+        Ave avexd=new Ave("alcon",2,2,"pollitos");
+        ManejoDeCsv.escribirCsv(avexd);
         menu();
     }
 }
