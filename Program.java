@@ -305,12 +305,14 @@ public class Program{
             }
         }
 
+        
+
     public static void menuZoo() {
         do {
             System.out.println("\n Menú Zoo ");
             System.out.println("1. Agregar nuevo animal y cantidad de comida que come");
             System.out.println("2. Ver todos los animales del Zoo");
-            System.out.println("3. Exportar datos a CSV");
+            System.out.println("3. Alimentar animales");
             System.out.println("4. Volver al menú principal");
             System.out.print("Ingrese un numero para elegir una Opcion");
             // sc.nextInt();
@@ -326,9 +328,8 @@ public class Program{
                     ManejoDeCsv.leerCsv("registro.csv");
                     break;
                 case 3:
-                    System.out.println("Opción 3: Exportar datos a CSV.");
-                    // ManejoDeCsv.escribirCsv();
-                    // Aquí iría el código para exportar los datos a un archivo CSV.
+                    System.out.println("Alimentar animales");
+                    
                     break;
                 case 4:
                     System.out.println("Volviendo al menú principal...");
@@ -339,6 +340,48 @@ public class Program{
         } while (true);
     }
 
+    public static void alimentarMamifero(){
+        String Line;
+    try(BufferedReader BuffR = new BufferedReader(new FileReader("registro.csv"))){
+
+        while((Line=BuffR.readLine())!=null){
+            String[] values=Line.split(",");
+
+            Mamifero mamiferoo = new Mamifero("nombre",0,0,"dieta");
+            
+            
+            }
+            System.out.println();
+        }
+    }catch(IOException e){
+        e.printStackTrace();
+        System.out.println("\"Error pues\"");
+    }
+
+    }
+
+    public static void alimentarAnimales(Animal animalxd){
+        
+    }
+
+    public static void opcionalimentar(){
+        System.out.println("elija el tipo de animales que quiere alimentar: ");
+        System.out.println("mamiferos"+"\n"+"aves"+"\n"+"reptiles");
+        System.out.print("opcion: ");
+        int opcn = sc.nextInt();
+        switch(opcn){
+            case 1:
+                System.out.println("mamifero: ");
+
+                break;
+            case 2:
+                alimentarAnimales();
+                break;
+            case 3:
+                alimentarAnimales();
+                break;
+        }
+    }
 
     public static void main(String[] args){
         menu();
