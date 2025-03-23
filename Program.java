@@ -6,8 +6,16 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Program{
+
+    //  --clase para manejar archivos CSV (aún en desarrollo*)-.
+    // @autor Junior-Hernandez 
     public static class ManejoDeCsv{
 
+        // funcion para escribir en archivos csv
+        public static void escribirCsv(){
+            System.out.println("escribo csv");
+        }
+        // funcion para leer archivos csv
         public static void leerCsv(String filepath){
             String line;
 
@@ -26,6 +34,7 @@ public class Program{
             }
         }
     }
+
     public static void main(String[] args){
         
     }
