@@ -1,22 +1,39 @@
-import java.util.Arrays;
-import java.util.Comparator;
+public class GestorAnimales {
+    Animal[] animales = new Animal[10];
+    int contador = 0;
 
-public class UtilidadesAnimales {
+    public boolean agregarAnimal(Animal animal) {
+        if (contador >= animales.length) {
+            System.out.println("No se puede agregar más animales. Capacidad llena.");
+            return false;
+        }
 
-    public static void ordenarPorId(Animal[] animales, int cantidad, boolean ascendente) {
-        Arrays.sort(animales, 0, cantidad, new Comparator<Animal>() {
-            @Override
-            public int compare(Animal a1, Animal a2) {
-                return ascendente ? Integer.compare(a1.getIdAnimal(), a2.getIdAnimal())
-                                  : Integer.compare(a2.getIdAnimal(), a1.getIdAnimal());
+        for (int i = 0; i < contador; i++) {
+            if (animales[i].getIdAnimal() == animal.getIdAnimal()) {
+                System.out.println("Error: ID repetido.");
+                return false;
             }
-        });
-        System.out.println("Animales ordenados " + (ascendente ? "ascendentemente." : "descendentemente."));
+        }
+
+        animales[contador++] = animal;
+        return true;
     }
 
-    public static void mostrarSoloIDs(Animal[] animales, int cantidad) {
-        for (int i = 0; i < cantidad; i++) {
-            System.out.println("ID Animal: " + animales[i].getIdAnimal());
+    public void mostrarAnimales() {
+        for (int i = 0; i < contador; i++) {
+            animales[i].mostrarInfo();
         }
+    }
+
+    public boolean estaLleno() {
+        return contador == animales.length;
+    }
+
+    public Animal[] getAnimales() {
+        return animales;
+    }
+
+    public int getContador() {
+        return contador;
     }
 }
