@@ -5,6 +5,7 @@
 package progra1.progra;
 
 import Progra1_DB.Reptiles;
+import java.math.BigInteger;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,18 +17,25 @@ import javax.persistence.Persistence;
  */
 public class daoReptiles {
     
-    public static boolean AddReptil(){
+    public static boolean InsertarReptil(){
         var input = new Scanner(System.in);
         var reptil = new Reptiles();
         
         System.out.println("ingrese el nombre del reptil");
         reptil.setNombre(input.nextLine());
        
-        System.out.println("ingrese la edad del reptil");
-        reptil.setEdad(input.nextBigInteger());
-       
         System.out.println("ingrese la especie del reptil");
         reptil.setEspecie(input.nextLine());
+        
+        System.out.println("ingrese la edad del reptil");
+        var edadInt = input.nextInt();
+          BigInteger edadBigInt = BigInteger.valueOf(edadInt);
+        
+        reptil.setEdad(edadBigInt);
+       
+       
+        System.out.println("ingrese la dieta del reptil");
+        reptil.setDieta(input.nextLine());
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ZooPersistent");
         
@@ -36,8 +44,15 @@ public class daoReptiles {
         
         try{
             
+            em.getTransaction().begin();
+            em.persist(reptil);
+            em.getTransaction().commit();
+            
         }catch(Exception ex){
+            em.getTransaction().rollback();
             System.out.println("No se pudo completar la transacción");
+        }finally{
+            em.close();
         }
         
         
