@@ -18,8 +18,8 @@ import javax.persistence.Persistence;
 public class daoReptiles {
     
     public static boolean InsertarReptil(){
-        var input = new Scanner(System.in);
-        var reptil = new Reptiles();
+        Scanner input = new Scanner(System.in);
+        Reptiles reptil = new Reptiles();
         
         System.out.println("ingrese el nombre del reptil");
         reptil.setNombre(input.nextLine());
@@ -28,14 +28,14 @@ public class daoReptiles {
         reptil.setEspecie(input.nextLine());
         
         System.out.println("ingrese la edad del reptil");
-        var edadInt = input.nextInt();
-          BigInteger edadBigInt = BigInteger.valueOf(edadInt);
-        
-        reptil.setEdad(edadBigInt);
+        reptil.setEdad(input.nextBigInteger());
        
        
         System.out.println("ingrese la dieta del reptil");
         reptil.setDieta(input.nextLine());
+        
+        
+        
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ZooPersistent");
         
@@ -48,16 +48,18 @@ public class daoReptiles {
             em.persist(reptil);
             em.getTransaction().commit();
             
+            return true;
+            
         }catch(Exception ex){
             em.getTransaction().rollback();
-            System.out.println("No se pudo completar la transacción");
+            System.out.println("No se pudo completar la transaccion");
         }finally{
             em.close();
         }
         
         
         
-        return true;
+        return false;
     }
     
     
